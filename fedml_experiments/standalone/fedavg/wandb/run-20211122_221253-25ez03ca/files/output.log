@@ -1,0 +1,16 @@
+INFO:root:load_data. dataset_name = fed_cifar100
+Traceback (most recent call last):
+  File "./main_fedavg.py", line 305, in <module>
+    dataset = load_data(args, args.dataset)
+  File "./main_fedavg.py", line 142, in load_data
+    class_num = load_partition_data_federated_cifar100(args.dataset, args.data_dir)
+  File "/home/workspace/FedML/fedml_api/data_preprocessing/fed_cifar100/data_loader.py", line 112, in load_partition_data_federated_cifar100
+    with h5py.File(train_file_path, 'r') as train_h5, h5py.File(test_file_path, 'r') as test_h5:
+  File "/home/cps01/anaconda3/envs/FEDML/lib/python3.6/site-packages/h5py/_hl/files.py", line 427, in __init__
+    swmr=swmr)
+  File "/home/cps01/anaconda3/envs/FEDML/lib/python3.6/site-packages/h5py/_hl/files.py", line 190, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 96, in h5py.h5f.open
+OSError: Unable to open file (unable to open file: name = './../../../data/fed_cifar100/datasets/fed_cifar100_train.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)

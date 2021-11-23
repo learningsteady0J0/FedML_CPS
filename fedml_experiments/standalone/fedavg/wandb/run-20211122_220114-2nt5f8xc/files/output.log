@@ -1,0 +1,167 @@
+
+INFO:root:load_data. dataset_name = femnist
+INFO:root:class_num = 62
+INFO:root:create_model. model_name = cnn, output_dim = 62
+INFO:root:CNN + FederatedEMNIST
+INFO:root:CNN_DropOut(
+  (conv2d_1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1))
+  (max_pooling): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2d_2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+  (dropout_1): Dropout(p=0.25, inplace=False)
+  (flatten): Flatten()
+  (linear_1): Linear(in_features=9216, out_features=128, bias=True)
+  (dropout_2): Dropout(p=0.5, inplace=False)
+  (linear_2): Linear(in_features=128, out_features=62, bias=True)
+  (relu): ReLU()
+)
+INFO:root:############setup_clients (START)#############
+INFO:root:self.local_sample_number = 20
+INFO:root:self.local_sample_number = 22
+INFO:root:self.local_sample_number = 18
+INFO:root:self.local_sample_number = 20
+INFO:root:self.local_sample_number = 22
+INFO:root:self.local_sample_number = 23
+INFO:root:self.local_sample_number = 19
+INFO:root:self.local_sample_number = 17
+INFO:root:self.local_sample_number = 23
+INFO:root:self.local_sample_number = 18
+INFO:root:############setup_clients (END)#############
+INFO:root:################Communication round : 0
+INFO:root:client_indexes = [1450 1424 2424  678 3266  685  499 1774 3300 1773]
+INFO:root:client_indexes = [1450 1424 2424  678 3266  685  499 1774 3300 1773]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.073465
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.104918
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.043588
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.061465
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.081318
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.100067
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.983123
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.107843
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.007774
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.058154
+INFO:root:################local_test_on_all_clients : 0
+INFO:root:{'training_acc': 0.05203659998362084, 'training_loss': 3.964235957879771}
+INFO:root:{'test_acc': 0.052140469522346834, 'test_loss': 3.964862495405772}
+INFO:root:################Communication round : 1
+INFO:root:client_indexes = [ 605 3359 2440 1661 3312 2361 2912 2689 2809 1905]
+INFO:root:client_indexes = [ 605 3359 2440 1661 3312 2361 2912 2689 2809 1905]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.997066
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.839137
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.797680
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.770527
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.818424
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.890764
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.797541
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.741726
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.903665
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.766177
+INFO:root:################Communication round : 2
+INFO:root:client_indexes = [ 110 2651  137 1809 3281 1111 1987 1487  934 1416]
+INFO:root:client_indexes = [ 110 2651  137 1809 3281 1111 1987 1487  934 1416]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.867364
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.788269
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.874691
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.714348
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.648300
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.813962
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.740460
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.816638
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.881035
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.287728
+INFO:root:################Communication round : 3
+INFO:root:client_indexes = [2039 1364 2664 1515 2038  250 3058 3356 1235 1224]
+INFO:root:client_indexes = [2039 1364 2664 1515 2038  250 3058 3356 1235 1224]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.655158
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.560682
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.685952
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.771560
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.639110
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.925156
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.743716
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.573898
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.916063
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.776457
+INFO:root:################Communication round : 4
+INFO:root:client_indexes = [2380 2646 1804  826 3352 1112  313 1246 3218 2556]
+INFO:root:client_indexes = [2380 2646 1804  826 3352 1112  313 1246 3218 2556]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.687252
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.603623
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.659137
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.958830
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.663595
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.762382
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.839739
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.871008
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.506230
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.654079
+INFO:root:################Communication round : 5
+INFO:root:client_indexes = [ 675 1081 2499 3044  613 2491  175 2358 2237   20]
+INFO:root:client_indexes = [ 675 1081 2499 3044  613 2491  175 2358 2237   20]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.886700
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.844444
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.641413
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.630045
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.866434
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.715476
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.797237
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.553930
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.591761
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.889133
+INFO:root:################local_test_on_all_clients : 5
+INFO:root:{'training_acc': 0.05351221364384255, 'training_loss': 3.708435448731726}
+INFO:root:{'test_acc': 0.05371500845346721, 'test_loss': 3.7085771904682434}
+INFO:root:################Communication round : 6
+INFO:root:client_indexes = [1381  410   50 2309 1597 1476  170  854 2153 1711]
+INFO:root:client_indexes = [1381  410   50 2309 1597 1476  170  854 2153 1711]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.665028
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.826119
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.808631
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.624916
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.598297
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.577289
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.807959
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.828047
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.597104
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.502576
+INFO:root:################Communication round : 7
+INFO:root:client_indexes = [2585  979 1491  652 3243 2646 2869 2694  479   95]
+INFO:root:client_indexes = [2585  979 1491  652 3243 2646 2869 2694  479   95]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.734843
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.831131
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.634585
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.787621
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.725556
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.631014
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.663065
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.579521
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.739431
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.743937
+INFO:root:################Communication round : 8
+INFO:root:client_indexes = [2308 1213  534  796   70  236 1003 1826 1324   81]
+INFO:root:client_indexes = [2308 1213  534  796   70  236 1003 1826 1324   81]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.619800
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.834144
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.782639
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.775162
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.760748
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.807247
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.751109
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.729465
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.670381
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.932483
+INFO:root:################Communication round : 9
+INFO:root:client_indexes = [2944 2990 3375 1086 1546  584 1449 1028 2328  257]
+INFO:root:client_indexes = [2944 2990 3375 1086 1546  584 1449 1028 2328  257]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.672541
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.653773
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.661441
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.835845
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.646729
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.761572
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.662406
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.734494
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.629017
+INFO:root:Client Index = 0	Epoch: 0	Loss: 3.799595
+INFO:root:################local_test_on_all_clients : 9
+INFO:root:{'training_acc': 0.05677017801171855, 'training_loss': 3.6847006272416567}
+INFO:root:{'test_acc': 0.05565091697533653, 'test_loss': 3.6853851023184725}

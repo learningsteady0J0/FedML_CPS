@@ -1,0 +1,46 @@
+2021-11-22 22:16:40,246 INFO    MainThread:25753 [internal.py:wandb_internal():91] W&B internal server running at pid: 25753, started at: 2021-11-22 22:16:40.246231
+2021-11-22 22:16:40,250 DEBUG   HandlerThread:25753 [handler.py:handle_request():124] handle_request: check_version
+2021-11-22 22:16:40,250 INFO    WriterThread:25753 [datastore.py:open_for_write():80] open: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/run-2brs196j.wandb
+2021-11-22 22:16:40,255 DEBUG   SenderThread:25753 [sender.py:send():179] send: header
+2021-11-22 22:16:40,256 DEBUG   SenderThread:25753 [sender.py:send_request():193] send_request: check_version
+2021-11-22 22:16:40,333 DEBUG   SenderThread:25753 [sender.py:send():179] send: run
+2021-11-22 22:16:40,652 INFO    SenderThread:25753 [dir_watcher.py:__init__():168] watching files in: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files
+2021-11-22 22:16:40,652 INFO    SenderThread:25753 [sender.py:_start_run_threads():719] run started: 2brs196j with start time 1637586999
+2021-11-22 22:16:40,708 DEBUG   SenderThread:25753 [sender.py:send():179] send: summary
+2021-11-22 22:16:40,708 INFO    SenderThread:25753 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-11-22 22:16:40,713 DEBUG   HandlerThread:25753 [handler.py:handle_request():124] handle_request: run_start
+2021-11-22 22:16:41,677 INFO    Thread-8  :25753 [dir_watcher.py:_on_file_created():216] file/dir created: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/wandb-summary.json
+2021-11-22 22:16:42,010 DEBUG   HandlerThread:25753 [meta.py:__init__():39] meta init
+2021-11-22 22:16:42,010 DEBUG   HandlerThread:25753 [meta.py:__init__():53] meta init done
+2021-11-22 22:16:42,010 DEBUG   HandlerThread:25753 [meta.py:probe():210] probe
+2021-11-22 22:16:42,020 DEBUG   HandlerThread:25753 [meta.py:_setup_git():200] setup git
+2021-11-22 22:16:42,051 DEBUG   HandlerThread:25753 [meta.py:_setup_git():207] setup git done
+2021-11-22 22:16:42,052 DEBUG   HandlerThread:25753 [meta.py:_save_pip():57] save pip
+2021-11-22 22:16:42,053 DEBUG   HandlerThread:25753 [meta.py:_save_pip():71] save pip done
+2021-11-22 22:16:42,053 DEBUG   HandlerThread:25753 [meta.py:_save_conda():78] save conda
+2021-11-22 22:16:42,675 INFO    Thread-8  :25753 [dir_watcher.py:_on_file_created():216] file/dir created: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/conda-environment.yaml
+2021-11-22 22:16:42,676 INFO    Thread-8  :25753 [dir_watcher.py:_on_file_created():216] file/dir created: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/requirements.txt
+2021-11-22 22:16:43,599 WARNING MainThread:25753 [internal.py:wandb_internal():147] Internal process interrupt: 1
+2021-11-22 22:16:43,679 DEBUG   HandlerThread:25753 [meta.py:_save_conda():86] save conda done
+2021-11-22 22:16:43,679 DEBUG   HandlerThread:25753 [meta.py:probe():252] probe done
+2021-11-22 22:16:43,685 DEBUG   SenderThread:25753 [sender.py:send():179] send: files
+2021-11-22 22:16:43,686 INFO    SenderThread:25753 [sender.py:_save_file():841] saving file wandb-metadata.json with policy now
+2021-11-22 22:16:43,750 WARNING MainThread:25753 [internal.py:wandb_internal():147] Internal process interrupt: 2
+2021-11-22 22:16:43,750 ERROR   MainThread:25753 [internal.py:wandb_internal():150] Internal process interrupted.
+2021-11-22 22:16:44,526 INFO    Thread-11 :25753 [upload_job.py:push():137] Uploaded file /tmp/tmpfv694w4bwandb/2w3zqzi6-wandb-metadata.json
+2021-11-22 22:16:44,676 INFO    Thread-8  :25753 [dir_watcher.py:_on_file_created():216] file/dir created: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/wandb-metadata.json
+2021-11-22 22:16:44,686 INFO    WriterThread:25753 [datastore.py:close():288] close: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/run-2brs196j.wandb
+2021-11-22 22:16:44,687 INFO    SenderThread:25753 [sender.py:finish():947] shutting down sender
+2021-11-22 22:16:44,687 INFO    SenderThread:25753 [dir_watcher.py:finish():282] shutting down directory watcher
+2021-11-22 22:16:45,677 INFO    SenderThread:25753 [dir_watcher.py:finish():312] scan: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files
+2021-11-22 22:16:45,677 INFO    SenderThread:25753 [dir_watcher.py:finish():318] scan save: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/wandb-summary.json wandb-summary.json
+2021-11-22 22:16:45,678 INFO    SenderThread:25753 [dir_watcher.py:finish():318] scan save: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/requirements.txt requirements.txt
+2021-11-22 22:16:45,678 INFO    SenderThread:25753 [dir_watcher.py:finish():318] scan save: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/conda-environment.yaml conda-environment.yaml
+2021-11-22 22:16:45,688 INFO    SenderThread:25753 [dir_watcher.py:finish():318] scan save: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/config.yaml config.yaml
+2021-11-22 22:16:45,698 INFO    SenderThread:25753 [dir_watcher.py:finish():318] scan save: /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/wandb-metadata.json wandb-metadata.json
+2021-11-22 22:16:45,698 INFO    SenderThread:25753 [file_pusher.py:finish():177] shutting down file pusher
+2021-11-22 22:16:45,699 INFO    SenderThread:25753 [file_pusher.py:join():182] waiting for file pusher
+2021-11-22 22:16:46,480 INFO    Thread-12 :25753 [upload_job.py:push():137] Uploaded file /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/wandb-summary.json
+2021-11-22 22:16:46,522 INFO    Thread-13 :25753 [upload_job.py:push():137] Uploaded file /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/requirements.txt
+2021-11-22 22:16:46,542 INFO    Thread-14 :25753 [upload_job.py:push():137] Uploaded file /home/workspace/FedML/fedml_experiments/standalone/fedavg/wandb/run-20211122_221639-2brs196j/files/config.yaml
+2021-11-22 22:16:47,394 INFO    MainThread:25753 [internal.py:handle_exit():78] Internal process exited
