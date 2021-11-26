@@ -1,1 +1,2 @@
 data/
+fedml_experiments/standalone/**/wandb/
