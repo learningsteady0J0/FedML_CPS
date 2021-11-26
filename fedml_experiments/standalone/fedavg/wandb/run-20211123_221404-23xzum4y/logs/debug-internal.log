@@ -1,0 +1,60 @@
+2021-11-23 22:14:04,656 INFO    MainThread:5320 [internal.py:wandb_internal():90] W&B internal server running at pid: 5320, started at: 2021-11-23 22:14:04.656375
+2021-11-23 22:14:04,659 DEBUG   HandlerThread:5320 [handler.py:handle_request():130] handle_request: check_version
+2021-11-23 22:14:04,659 INFO    WriterThread:5320 [datastore.py:open_for_write():77] open: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/run-23xzum4y.wandb
+2021-11-23 22:14:04,663 DEBUG   SenderThread:5320 [sender.py:send():238] send: header
+2021-11-23 22:14:04,663 DEBUG   SenderThread:5320 [sender.py:send_request():252] send_request: check_version
+2021-11-23 22:14:04,725 DEBUG   SenderThread:5320 [sender.py:send():238] send: run
+2021-11-23 22:14:04,980 INFO    SenderThread:5320 [dir_watcher.py:__init__():169] watching files in: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files
+2021-11-23 22:14:04,980 INFO    SenderThread:5320 [sender.py:_start_run_threads():828] run started: 23xzum4y with start time 1637673244
+2021-11-23 22:14:04,984 DEBUG   SenderThread:5320 [sender.py:send():238] send: summary
+2021-11-23 22:14:04,985 INFO    SenderThread:5320 [sender.py:_save_file():960] saving file wandb-summary.json with policy end
+2021-11-23 22:14:04,987 DEBUG   HandlerThread:5320 [handler.py:handle_request():130] handle_request: run_start
+2021-11-23 22:14:04,991 DEBUG   HandlerThread:5320 [meta.py:__init__():40] meta init
+2021-11-23 22:14:04,991 DEBUG   HandlerThread:5320 [meta.py:__init__():54] meta init done
+2021-11-23 22:14:04,991 DEBUG   HandlerThread:5320 [meta.py:probe():214] probe
+2021-11-23 22:14:04,998 DEBUG   HandlerThread:5320 [meta.py:_setup_git():204] setup git
+2021-11-23 22:14:05,017 DEBUG   HandlerThread:5320 [meta.py:_setup_git():211] setup git done
+2021-11-23 22:14:05,017 DEBUG   HandlerThread:5320 [meta.py:_save_pip():58] save pip
+2021-11-23 22:14:05,018 DEBUG   HandlerThread:5320 [meta.py:_save_pip():72] save pip done
+2021-11-23 22:14:05,018 DEBUG   HandlerThread:5320 [meta.py:_save_conda():79] save conda
+2021-11-23 22:14:05,985 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_created():217] file/dir created: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/wandb-summary.json
+2021-11-23 22:14:05,985 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_created():217] file/dir created: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/conda-environment.yaml
+2021-11-23 22:14:05,986 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_created():217] file/dir created: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/requirements.txt
+2021-11-23 22:14:06,008 DEBUG   HandlerThread:5320 [meta.py:_save_conda():89] save conda done
+2021-11-23 22:14:06,009 DEBUG   HandlerThread:5320 [meta.py:probe():252] probe done
+2021-11-23 22:14:06,012 DEBUG   SenderThread:5320 [sender.py:send():238] send: files
+2021-11-23 22:14:06,013 INFO    SenderThread:5320 [sender.py:_save_file():960] saving file wandb-metadata.json with policy now
+2021-11-23 22:14:06,023 DEBUG   HandlerThread:5320 [handler.py:handle_request():130] handle_request: stop_status
+2021-11-23 22:14:06,024 DEBUG   SenderThread:5320 [sender.py:send_request():252] send_request: stop_status
+2021-11-23 22:14:06,719 INFO    Thread-11 :5320 [upload_job.py:push():137] Uploaded file /tmp/tmpkef4ldq7wandb/2bcworu7-wandb-metadata.json
+2021-11-23 22:14:06,981 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_created():217] file/dir created: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/wandb-metadata.json
+2021-11-23 22:14:06,982 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_created():217] file/dir created: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/output.log
+2021-11-23 22:14:08,982 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/output.log
+2021-11-23 22:14:21,238 DEBUG   HandlerThread:5320 [handler.py:handle_request():130] handle_request: stop_status
+2021-11-23 22:14:21,238 DEBUG   SenderThread:5320 [sender.py:send_request():252] send_request: stop_status
+2021-11-23 22:14:22,987 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/output.log
+2021-11-23 22:14:24,988 INFO    Thread-8  :5320 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/output.log
+2021-11-23 22:14:33,898 DEBUG   SenderThread:5320 [sender.py:send():238] send: stats
+2021-11-23 22:14:36,448 DEBUG   HandlerThread:5320 [handler.py:handle_request():130] handle_request: stop_status
+2021-11-23 22:14:36,448 DEBUG   SenderThread:5320 [sender.py:send_request():252] send_request: stop_status
+2021-11-23 22:14:46,905 WARNING MainThread:5320 [internal.py:wandb_internal():146] Internal process interrupt: 1
+2021-11-23 22:14:47,066 WARNING MainThread:5320 [internal.py:wandb_internal():146] Internal process interrupt: 2
+2021-11-23 22:14:47,067 ERROR   MainThread:5320 [internal.py:wandb_internal():149] Internal process interrupted.
+2021-11-23 22:14:47,663 INFO    SenderThread:5320 [sender.py:finish():1091] shutting down sender
+2021-11-23 22:14:47,663 INFO    SenderThread:5320 [dir_watcher.py:finish():283] shutting down directory watcher
+2021-11-23 22:14:47,899 INFO    WriterThread:5320 [datastore.py:close():281] close: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/run-23xzum4y.wandb
+2021-11-23 22:14:47,992 INFO    SenderThread:5320 [dir_watcher.py:finish():313] scan: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files
+2021-11-23 22:14:47,992 INFO    SenderThread:5320 [dir_watcher.py:finish():327] scan save: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/wandb-summary.json wandb-summary.json
+2021-11-23 22:14:47,992 INFO    SenderThread:5320 [dir_watcher.py:finish():327] scan save: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/output.log output.log
+2021-11-23 22:14:47,993 INFO    SenderThread:5320 [dir_watcher.py:finish():327] scan save: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/requirements.txt requirements.txt
+2021-11-23 22:14:48,000 INFO    SenderThread:5320 [dir_watcher.py:finish():327] scan save: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/wandb-metadata.json wandb-metadata.json
+2021-11-23 22:14:48,004 INFO    SenderThread:5320 [dir_watcher.py:finish():327] scan save: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/conda-environment.yaml conda-environment.yaml
+2021-11-23 22:14:48,007 INFO    SenderThread:5320 [dir_watcher.py:finish():327] scan save: /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/config.yaml config.yaml
+2021-11-23 22:14:48,013 INFO    SenderThread:5320 [file_pusher.py:finish():177] shutting down file pusher
+2021-11-23 22:14:48,014 INFO    SenderThread:5320 [file_pusher.py:join():182] waiting for file pusher
+2021-11-23 22:14:48,753 INFO    Thread-15 :5320 [upload_job.py:push():137] Uploaded file /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/conda-environment.yaml
+2021-11-23 22:14:48,764 INFO    Thread-13 :5320 [upload_job.py:push():137] Uploaded file /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/output.log
+2021-11-23 22:14:48,767 INFO    Thread-16 :5320 [upload_job.py:push():137] Uploaded file /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/config.yaml
+2021-11-23 22:14:48,769 INFO    Thread-14 :5320 [upload_job.py:push():137] Uploaded file /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/requirements.txt
+2021-11-23 22:14:48,805 INFO    Thread-12 :5320 [upload_job.py:push():137] Uploaded file /home/cps/Desktop/FedML_CPS/fedml_experiments/standalone/fedavg/wandb/run-20211123_221404-23xzum4y/files/wandb-summary.json
+2021-11-23 22:14:49,210 INFO    MainThread:5320 [internal.py:handle_exit():77] Internal process exited

@@ -66,7 +66,7 @@ def get_dataloader(dataset, data_dir, train_bs, test_bs, client_idx=None):
     return train_dl, test_dl
 
 
-def load_partition_data_distributed_federated_emnist(process_id, dataset, data_dir, 
+def load_partition_data_distributed_federated_emnist(process_id, dataset, data_dir,
                                                      batch_size=DEFAULT_BATCH_SIZE):
 
     if process_id == 0:
@@ -132,14 +132,14 @@ def load_partition_data_federated_emnist(dataset, data_dir, batch_size=DEFAULT_B
                 ),
                 batch_size=batch_size, shuffle=True)
     train_data_num = len(train_data_global.dataset)
-    
+
     test_data_global = data.DataLoader(
                 data.ConcatDataset(
                     list(dl.dataset for dl in list(test_data_local_dict.values()) if dl is not None)
                 ),
                 batch_size=batch_size, shuffle=True)
     test_data_num = len(test_data_global.dataset)
-    
+
     # class number
     train_file_path = os.path.join(data_dir, DEFAULT_TRAIN_FILE)
     with h5py.File(train_file_path, 'r') as train_h5:
@@ -148,4 +148,3 @@ def load_partition_data_federated_emnist(dataset, data_dir, batch_size=DEFAULT_B
 
     return DEFAULT_TRAIN_CLIENTS_NUM, train_data_num, test_data_num, train_data_global, test_data_global, \
            data_local_num_dict, train_data_local_dict, test_data_local_dict, class_num
-

@@ -84,11 +84,17 @@ def add_args(parser):
     parser.add_argument('--frequency_of_the_test', type=int, default=5,
                         help='the frequency of the algorithms')
 
+    parser.add_argument('--interver', type=int, default=5,
+                        help='server model -> local model per round')
+
     parser.add_argument('--gpu', type=int, default=0,
                         help='gpu')
 
     parser.add_argument('--ci', type=int, default=0,
                         help='CI')
+
+    parser.add_argument('--name', type=str, default=' ',
+                        help='wandb save name')
     return parser
 
 
@@ -110,7 +116,7 @@ def load_data(args, dataset_name):
         train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
         class_num = load_partition_data_mnist(args.batch_size)
         """
-        For shallow NN or linear models, 
+        For shallow NN or linear models,
         we uniformly sample a fraction of clients each round (as the original FedAvg paper)
         """
         args.client_num_in_total = client_num
@@ -289,7 +295,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="fedml",
-        name="FedAVG-r" + str(args.comm_round) + "-e" + str(args.epochs) + "-lr" + str(args.lr),
+        name= str(args.name) + "-" + "FedAVG-r" + str(args.comm_round) + "-e" + str(args.epochs) + "-lr" + str(args.lr),
         config=args
     )
 

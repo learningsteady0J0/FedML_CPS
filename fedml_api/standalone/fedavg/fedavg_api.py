@@ -7,6 +7,7 @@ import torch
 import wandb
 
 from fedml_api.standalone.fedavg.client import Client
+import time
 
 
 class FedAvgAPI(object):
@@ -25,6 +26,7 @@ class FedAvgAPI(object):
         self.train_data_local_num_dict = train_data_local_num_dict
         self.train_data_local_dict = train_data_local_dict
         self.test_data_local_dict = test_data_local_dict
+        self.start = time.time()
 
         self.model_trainer = model_trainer
         self._setup_clients(train_data_local_num_dict, train_data_local_dict, test_data_local_dict, model_trainer)
@@ -42,12 +44,13 @@ class FedAvgAPI(object):
         for round_idx in range(self.args.comm_round):
 
             logging.info("################Communication round : {}".format(round_idx))
+            self.start = time.time()
 
             w_locals = []
 
             """
             for scalability: following the original FedAvg algorithm, we uniformly sample a fraction of clients in each round.
-            Instead of changing the 'Client' instances, our implementation keeps the 'Client' instances and then updates their local dataset 
+            Instead of changing the 'Client' instances, our implementation keeps the 'Client' instances and then updates their local dataset
             """
             client_indexes = self._client_sampling(round_idx, self.args.client_num_in_total,
                                                    self.args.client_num_per_round)
@@ -79,6 +82,9 @@ class FedAvgAPI(object):
                     self._local_test_on_validation_set(round_idx)
                 else:
                     self._local_test_on_all_clients(round_idx)
+
+            logging.info("################running time: {}".format(time.time()-self.start))
+
 
     def _client_sampling(self, round_idx, client_num_in_total, client_num_per_round):
         if client_num_in_total == client_num_per_round:
@@ -139,7 +145,7 @@ class FedAvgAPI(object):
             """
             if self.test_data_local_dict[client_idx] is None:
                 continue
-            client.update_local_dataset(0, self.train_data_local_dict[client_idx],
+            client.update_local_dataset(client_idx, self.train_data_local_dict[client_idx],
                                         self.test_data_local_dict[client_idx],
                                         self.train_data_local_num_dict[client_idx])
             # train data
@@ -155,7 +161,7 @@ class FedAvgAPI(object):
             test_metrics['losses'].append(copy.deepcopy(test_local_metrics['test_loss']))
 
             """
-            Note: CI environment is CPU-based computing. 
+            Note: CI environment is CPU-based computing.
             The training speed for RNN training is to slow in this setting, so we only test a client to make sure there is no programming error.
             """
             if self.args.ci == 1:

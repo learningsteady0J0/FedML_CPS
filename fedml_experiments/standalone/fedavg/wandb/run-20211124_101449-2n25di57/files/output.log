@@ -1,0 +1,131 @@
+
+INFO:root:load_data. dataset_name = femnist
+INFO:root:class_num = 62
+INFO:root:create_model. model_name = cnn, output_dim = 62
+INFO:root:CNN + FederatedEMNIST
+INFO:root:CNN_DropOut(
+  (conv2d_1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1))
+  (max_pooling): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2d_2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+  (dropout_1): Dropout(p=0.25, inplace=False)
+  (flatten): Flatten()
+  (linear_1): Linear(in_features=9216, out_features=128, bias=True)
+  (dropout_2): Dropout(p=0.5, inplace=False)
+  (linear_2): Linear(in_features=128, out_features=62, bias=True)
+  (relu): ReLU()
+)
+INFO:root:############setup_clients (START)#############
+INFO:root:self.local_sample_number = 20
+INFO:root:self.local_sample_number = 22
+INFO:root:self.local_sample_number = 18
+INFO:root:self.local_sample_number = 20
+INFO:root:self.local_sample_number = 22
+INFO:root:self.local_sample_number = 23
+INFO:root:self.local_sample_number = 19
+INFO:root:self.local_sample_number = 17
+INFO:root:self.local_sample_number = 23
+INFO:root:self.local_sample_number = 18
+INFO:root:############setup_clients (END)#############
+INFO:root:################Communication round : 0
+INFO:root:client_indexes = [1450 1424 2424  678 3266  685  499 1774 3300 1773]
+INFO:root:client_indexes = [1450 1424 2424  678 3266  685  499 1774 3300 1773]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.073465
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.953987
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.866202
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.803900
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.765435
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.723782
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.699118
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.680961
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.666984
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.650676
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.096417
+INFO:root:Client Index = 0	Epoch: 1	Loss: 4.028752
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.968660
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.919784
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.889782
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.872697
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.867912
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.847517
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.818871
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.796552
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.077937
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.939570
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.867841
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.784928
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.748365
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.692423
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.692366
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.648970
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.653963
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.648818
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.069573
+INFO:root:Client Index = 0	Epoch: 1	Loss: 4.051141
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.988375
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.962396
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.935086
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.911747
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.902997
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.877100
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.889115
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.878861
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.078581
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.992051
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.874531
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.815946
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.763673
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.729481
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.700601
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.678355
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.652379
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.636100
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.077730
+INFO:root:Client Index = 0	Epoch: 1	Loss: 4.028121
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.959785
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.928587
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.910291
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.892617
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.873703
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.861241
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.848824
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.841367
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.033867
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.904056
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.844463
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.788760
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.762531
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.738701
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.713993
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.695588
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.683161
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.671781
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.092104
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.992579
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.904054
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.846136
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.798952
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.765091
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.743118
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.714367
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.696665
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.676251
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.054399
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.964577
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.881422
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.799971
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.758133
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.747039
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.720789
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.710727
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.680237
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.671226
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.040182
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.845659
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.755649
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.743738
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.687855
+INFO:root:Client Index = 0	Epoch: 5	Loss: 3.659569
+INFO:root:Client Index = 0	Epoch: 6	Loss: 3.621825
+INFO:root:Client Index = 0	Epoch: 7	Loss: 3.585355
+INFO:root:Client Index = 0	Epoch: 8	Loss: 3.584453
+INFO:root:Client Index = 0	Epoch: 9	Loss: 3.572977

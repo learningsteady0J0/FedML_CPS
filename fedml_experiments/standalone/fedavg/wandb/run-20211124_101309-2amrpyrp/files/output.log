@@ -1,0 +1,92 @@
+
+INFO:root:load_data. dataset_name = femnist
+INFO:root:class_num = 62
+INFO:root:create_model. model_name = cnn, output_dim = 62
+INFO:root:CNN + FederatedEMNIST
+INFO:root:CNN_DropOut(
+  (conv2d_1): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1))
+  (max_pooling): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2d_2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+  (dropout_1): Dropout(p=0.25, inplace=False)
+  (flatten): Flatten()
+  (linear_1): Linear(in_features=9216, out_features=128, bias=True)
+  (dropout_2): Dropout(p=0.5, inplace=False)
+  (linear_2): Linear(in_features=128, out_features=62, bias=True)
+  (relu): ReLU()
+)
+INFO:root:############setup_clients (START)#############
+INFO:root:self.local_sample_number = 20
+INFO:root:self.local_sample_number = 22
+INFO:root:self.local_sample_number = 18
+INFO:root:self.local_sample_number = 20
+INFO:root:self.local_sample_number = 22
+INFO:root:self.local_sample_number = 23
+INFO:root:self.local_sample_number = 19
+INFO:root:self.local_sample_number = 17
+INFO:root:self.local_sample_number = 23
+INFO:root:self.local_sample_number = 18
+INFO:root:############setup_clients (END)#############
+INFO:root:################Communication round : 0
+INFO:root:client_indexes = [1450 1424 2424  678 3266  685  499 1774 3300 1773]
+INFO:root:client_indexes = [1450 1424 2424  678 3266  685  499 1774 3300 1773]
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.073465
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.953987
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.866202
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.803900
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.765435
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.091765
+INFO:root:Client Index = 0	Epoch: 1	Loss: 4.010753
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.974865
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.921335
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.891950
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.064641
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.906370
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.981177
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.895696
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.834075
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.050144
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.926640
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.912605
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.881731
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.853678
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.037431
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.930173
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.839875
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.791476
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.754169
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.090673
+INFO:root:Client Index = 0	Epoch: 1	Loss: 4.046062
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.987524
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.958804
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.926134
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.011093
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.914732
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.847237
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.807327
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.759594
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.101225
+INFO:root:Client Index = 0	Epoch: 1	Loss: 4.006462
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.930033
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.868735
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.826148
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.068256
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.981176
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.884207
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.861509
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.849705
+INFO:root:Client Index = 0	Epoch: 0	Loss: 4.083254
+INFO:root:Client Index = 0	Epoch: 1	Loss: 3.974350
+INFO:root:Client Index = 0	Epoch: 2	Loss: 3.808812
+INFO:root:Client Index = 0	Epoch: 3	Loss: 3.812749
+INFO:root:Client Index = 0	Epoch: 4	Loss: 3.739371
+INFO:root:################local_test_on_all_clients : 0
+INFO:root:################global_train num : 18
+INFO:root:################global_test num : 18
+Traceback (most recent call last):
+  File "./main_fedavg.py", line 322, in <module>
+    fedavgAPI.train()
+  File "/home/cps/Desktop/FedML_CPS/fedml_api/standalone/fedavg/fedavg_api.py", line 84, in train
+    self._local_test_on_all_clients(round_idx)
+  File "/home/cps/Desktop/FedML_CPS/fedml_api/standalone/fedavg/fedavg_api.py", line 189, in _local_test_on_all_clients
+    global_train_acc = sum(global_train_metrics_num_correct/ global_train_metrics_num_samples)
+TypeError: 'float' object is not iterable
