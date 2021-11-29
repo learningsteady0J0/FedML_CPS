@@ -4,14 +4,13 @@ import random
 
 import numpy as np
 import torch
-import wandb
 
 from fedml_api.standalone.fedavg.client import Client
 import time
 
 
 class FedAvgAPI(object):
-    def __init__(self, dataset, device, args, model_trainer):
+    def __init__(self, dataset, device, args, model_trainer,save_dir):
         self.device = device
         self.args = args
         [train_data_num, test_data_num, train_data_global, test_data_global,

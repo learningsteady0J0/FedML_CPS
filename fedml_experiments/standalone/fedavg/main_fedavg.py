@@ -6,7 +6,6 @@ import sys
 
 import numpy as np
 import torch
-import wandb
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.getcwd(), "../../../")))
 
@@ -93,8 +92,8 @@ def add_args(parser):
     parser.add_argument('--ci', type=int, default=0,
                         help='CI')
 
-    parser.add_argument('--name', type=str, default=' ',
-                        help='wandb save name')
+    parser.add_argument('--name', type=str, default='test',
+                        help='exp name')
     return parser
 
 
@@ -293,12 +292,6 @@ if __name__ == "__main__":
     device = torch.device("cuda:" + str(args.gpu) if torch.cuda.is_available() else "cpu")
     logger.info(device)
 
-    wandb.init(
-        project="fedml",
-        name= str(args.name) + "-" + "FedAVG-r" + str(args.comm_round) + "-e" + str(args.epochs) + "-lr" + str(args.lr),
-        config=args
-    )
-
     # Set the random seed. The np.random seed determines the dataset partition.
     # The torch_manual_seed determines the initial weight.
     # We fix these two, so that we can reproduce the result.
@@ -307,6 +300,18 @@ if __name__ == "__main__":
     torch.manual_seed(0)
     torch.cuda.manual_seed_all(0)
     torch.backends.cudnn.deterministic = True
+
+    exp_list = os.listdir("../../../results")
+    exp_list.sort()
+    exp_last = exp_list.pop()
+
+    try:
+        last_num = int(exp_last.split('$')[0][3:])
+        save_dir = "../../../results/exp{}$fedAVG_{}_{}".format(last_num+1, args.dataset, args.name)
+        os.mkdir(save_dir)
+    except:
+        print("check exp folder name in results folder ")
+        exit()
 
     # load data
     dataset = load_data(args, args.dataset)
@@ -318,5 +323,5 @@ if __name__ == "__main__":
     model_trainer = custom_model_trainer(args, model)
     logging.info(model)
 
-    fedavgAPI = FedAvgAPI(dataset, device, args, model_trainer)
+    fedavgAPI = FedAvgAPI(dataset, device, args, model_trainer,save_dir)
     fedavgAPI.train()
