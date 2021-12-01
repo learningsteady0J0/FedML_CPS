@@ -46,7 +46,7 @@ def draw_clientresult(client_results, round, save_dir, draw_num = 3):
         draw_losses(round_client_results[client_result_idx]['train_losses'], round_client_results[client_result_idx]['test_losses'], save_dir, 'round{}_client_worst{}'.format(round,draw_num-idx))
 
     # full draw
-    for idx, acc_list in enumerate(best_acc_list[-draw_num:]):
+    for idx, acc_list in enumerate(best_acc_list):
         client_result_idx = acc_list[0]
         test_acc = round_client_results[client_result_idx]['test_acc']
         plt.plot(range(1,len(test_acc)+1),test_acc, label = '{}'.format(idx+1))
