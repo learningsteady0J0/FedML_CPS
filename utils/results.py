@@ -51,5 +51,5 @@ def draw_clientresult(client_results, round, save_dir, draw_num = 3):
         test_acc = round_client_results[client_result_idx]['test_acc']
         plt.plot(range(1,len(test_acc)+1),test_acc, label = '{}'.format(idx+1))
     plt.legend()
-    plt.savefig(save_dir + '/{}_acc.png'.format(name),dpi=300)
+    plt.savefig(save_dir + '/full_acc.png',dpi=300)
     plt.cla()
