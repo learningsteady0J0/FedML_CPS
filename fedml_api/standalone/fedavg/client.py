@@ -26,9 +26,9 @@ class Client:
 
     def train(self, w_global):
         self.model_trainer.set_model_params(w_global)
-        self.model_trainer.train(self.local_training_data, self.device, self.args)
+        client_result = self.model_trainer.train(self.local_training_data, self.local_test_data, self.device, self.args)
         weights = self.model_trainer.get_model_params()
-        return weights
+        return weights, client_result
 
     def local_test(self, b_use_test_dataset):
         if b_use_test_dataset:

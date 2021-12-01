@@ -1,5 +1,5 @@
 import logging
-
+import copy
 import torch
 from torch import nn
 
@@ -16,7 +16,7 @@ class MyModelTrainer(ModelTrainer):
     def set_model_params(self, model_parameters):
         self.model.load_state_dict(model_parameters)
 
-    def train(self, train_data, device, args):
+    def train(self, train_data, test_data, device, args):
         model = self.model
 
         model.to(device)
@@ -30,7 +30,7 @@ class MyModelTrainer(ModelTrainer):
             optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, self.model.parameters()), lr=args.lr,
                                          weight_decay=args.wd, amsgrad=True)
 
-        epoch_loss = []
+        client_result = {'train_losses':[], 'test_losses':[], 'train_acc':[], 'test_acc':[], 'best_acc':-1}
         for epoch in range(args.epochs):
             batch_loss = []
             for batch_idx, (x, labels) in enumerate(train_data):
@@ -47,10 +47,33 @@ class MyModelTrainer(ModelTrainer):
                 # logging.info('Update Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 #     epoch, (batch_idx + 1) * args.batch_size, len(train_data) * args.batch_size,
                 #            100. * (batch_idx + 1) / len(train_data), loss.item()))
-                batch_loss.append(loss.item())
-            epoch_loss.append(sum(batch_loss) / len(batch_loss))
-            logging.info('Client Index = {}\tEpoch: {}\tLoss: {:.6f}'.format(
-                self.id, epoch, sum(epoch_loss) / len(epoch_loss)))
+            train_local_metrics = self.test(train_data, device, args)
+            train_num_samples = copy.deepcopy(train_local_metrics['test_total'])
+            train_num_correct = copy.deepcopy(train_local_metrics['test_correct'])
+            train_losses = copy.deepcopy(train_local_metrics['test_loss'])
+
+            test_local_metrics = self.test(test_data, device, args)
+            test_num_samples = copy.deepcopy(test_local_metrics['test_total'])
+            test_num_correct = copy.deepcopy(test_local_metrics['test_correct'])
+            test_losses = copy.deepcopy(test_local_metrics['test_loss'])
+
+            # test on training dataset
+            train_acc = train_num_correct / train_num_samples
+            train_loss = train_losses / train_num_samples
+
+            # test on test dataset
+            test_acc = test_num_correct / test_num_samples
+            test_loss = test_losses / test_num_samples
+
+            if client_result['best_acc'] < test_acc:
+                client_result['best_acc'] = test_acc
+
+            client_result['train_losses'].append(train_loss)
+            client_result['train_acc'].append(train_acc)
+
+            client_result['test_losses'].append(test_loss)
+            client_result['test_acc'].append(test_acc)
+        return client_result
 
     def test(self, test_data, device, args):
         model = self.model

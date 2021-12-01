@@ -285,6 +285,7 @@ if __name__ == "__main__":
     logging.basicConfig()
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
+    logging.getLogger('matplotlib.font_manager').disabled = True
 
     parser = add_args(argparse.ArgumentParser(description='FedAvg-standalone'))
     args = parser.parse_args()
@@ -302,16 +303,26 @@ if __name__ == "__main__":
     torch.backends.cudnn.deterministic = True
 
     exp_list = os.listdir("../../../results")
-    exp_list.sort()
-    exp_last = exp_list.pop()
-
+    if len(exp_list) == 0:
+        last_num = 0
+    else:
+        last_num = -777
+        for exp in exp_list:
+            exp_num = int(exp.split('$')[0][3:])
+            if last_num < exp_num:
+                last_num = exp_num
     try:
-        last_num = int(exp_last.split('$')[0][3:])
         save_dir = "../../../results/exp{}$fedAVG_{}_{}".format(last_num+1, args.dataset, args.name)
         os.mkdir(save_dir)
     except:
         print("check exp folder name in results folder ")
         exit()
+
+    f = open(save_dir + "/parameter.txt", 'w')
+    for key, val in vars(args).items():
+        data = "{0:<30}{1}\n".format(key,val)
+        f.write(data)
+    f.close()
 
     # load data
     dataset = load_data(args, args.dataset)
