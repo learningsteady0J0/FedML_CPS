@@ -3,8 +3,8 @@ import logging
 
 class Client:
 
-    def __init__(self, client_idx, local_training_data, local_test_data, local_sample_number, args, device,
-                 model_trainer):
+    def __init__(self, client_idx, local_training_data, local_test_data, local_sample_number,
+                 args, device, model_trainer):
         self.client_idx = client_idx
         self.local_training_data = local_training_data
         self.local_test_data = local_test_data

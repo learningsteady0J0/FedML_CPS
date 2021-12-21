@@ -26,7 +26,9 @@ OPT=$12
 
 CI=$13
 
-NAME=$14
+ORIGINAL=$14
+
+NAME=$15
 
 python3 ./main_fedavg.py \
 --gpu $GPU \
@@ -42,4 +44,5 @@ python3 ./main_fedavg.py \
 --client_optimizer $OPT \
 --lr $LR \
 --ci $CI \
+--original $ORIGINAL \
 --name $NAME

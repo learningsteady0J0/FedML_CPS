@@ -144,6 +144,9 @@ def partition_data(dataset, datadir, partition, n_nets, alpha):
                 min_size = min([len(idx_j) for idx_j in idx_batch])
 
         for j in range(n_nets):
+            if len(idx_batch[j]) == 0:
+                logging.info("*********too many client // there is client to get 0 of datas ***************")
+                exit()
             np.random.shuffle(idx_batch[j])
             net_dataidx_map[j] = idx_batch[j]
 

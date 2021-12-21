@@ -57,7 +57,13 @@ class CIFAR10_truncated(data.Dataset):
             # print("train member of the class: {}".format(self.train))
             # data = cifar_dataobj.train_data
             data = cifar_dataobj.data
+            print(type(data))
+            print(data.shape)
+            input()
             target = np.array(cifar_dataobj.targets)
+            print(type(target))
+            print(target.shape)
+            input()
         else:
             data = cifar_dataobj.data
             target = np.array(cifar_dataobj.targets)

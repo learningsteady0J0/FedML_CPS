@@ -8,25 +8,22 @@ import numpy as np
 import torch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.getcwd(), "../../../")))
+from utils.results import results_class
 
 from fedml_api.data_preprocessing.cifar10.data_loader import load_partition_data_cifar10
 from fedml_api.data_preprocessing.cifar100.data_loader import load_partition_data_cifar100
 from fedml_api.data_preprocessing.cinic10.data_loader import load_partition_data_cinic10
 from fedml_api.data_preprocessing.fed_cifar100.data_loader import load_partition_data_federated_cifar100
-from fedml_api.data_preprocessing.shakespeare.data_loader import load_partition_data_shakespeare
-from fedml_api.data_preprocessing.fed_shakespeare.data_loader import load_partition_data_federated_shakespeare
-from fedml_api.data_preprocessing.stackoverflow_lr.data_loader import load_partition_data_federated_stackoverflow_lr
-from fedml_api.data_preprocessing.stackoverflow_nwp.data_loader import load_partition_data_federated_stackoverflow_nwp
 from fedml_api.data_preprocessing.ImageNet.data_loader import load_partition_data_ImageNet
 from fedml_api.data_preprocessing.Landmarks.data_loader import load_partition_data_landmarks
 
 from fedml_api.model.cv.mobilenet import mobilenet
 from fedml_api.model.cv.resnet import resnet56
-from fedml_api.model.cv.cnn import CNN_DropOut
+from fedml_api.model.cv.cnn import CNN_DropOut, CNN_OriginalFedAvg
 from fedml_api.data_preprocessing.FederatedEMNIST.data_loader import load_partition_data_federated_emnist
-from fedml_api.model.nlp.rnn import RNN_OriginalFedAvg, RNN_StackOverFlow
 
-from fedml_api.data_preprocessing.MNIST.data_loader import load_partition_data_mnist
+from fedml_api.data_preprocessing.MNIST.data_loader_original import load_partition_data_mnist_original
+from fedml_api.data_preprocessing.MNIST.data_loader_custom import load_partition_data_mnist_custom
 from fedml_api.model.linear.lr import LogisticRegression
 from fedml_api.model.cv.resnet_gn import resnet18
 
@@ -94,10 +91,12 @@ def add_args(parser):
 
     parser.add_argument('--name', type=str, default='test',
                         help='exp name')
+    #change
+    parser.add_argument('--original', type=int, default=0,
+                        help='data original')
     return parser
 
-
-def load_data(args, dataset_name):
+def load_data(args, dataset_name, results_class):
     # check if the centralized training is enabled
     centralized = True if args.client_num_in_total == 1 else False
 
@@ -109,16 +108,23 @@ def load_data(args, dataset_name):
     else:
         full_batch = False
 
+    #change
     if dataset_name == "mnist":
         logging.info("load_data. dataset_name = %s" % dataset_name)
-        client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
-        train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
-        class_num = load_partition_data_mnist(args.batch_size)
-        """
-        For shallow NN or linear models,
-        we uniformly sample a fraction of clients each round (as the original FedAvg paper)
-        """
-        args.client_num_in_total = client_num
+        if args.original == 1:
+            client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
+            train_data_local_num_dict, train_data_local_dict, test_data_local_dict, local_data_cls_dict, \
+            class_num = load_partition_data_mnist_original(args.batch_size)
+            """
+            For shallow NN or linear models,
+            we uniformly sample a fraction of clients each round (as the original FedAvg paper)
+            """
+            args.client_num_in_total = client_num
+        else:
+            client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
+            train_data_local_num_dict, train_data_local_dict, test_data_local_dict, local_data_cls_dict, \
+            class_num = load_partition_data_mnist_custom(args.batch_size, partition_method=args.partition_method \
+                                                          ,client_num=args.client_num_in_total, partition_alpha=args.partition_alpha)
 
     elif dataset_name == "femnist":
         logging.info("load_data. dataset_name = %s" % dataset_name)
@@ -127,37 +133,11 @@ def load_data(args, dataset_name):
         class_num = load_partition_data_federated_emnist(args.dataset, args.data_dir)
         args.client_num_in_total = client_num
 
-    elif dataset_name == "shakespeare":
-        logging.info("load_data. dataset_name = %s" % dataset_name)
-        client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
-        train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
-        class_num = load_partition_data_shakespeare(args.batch_size)
-        args.client_num_in_total = client_num
-
-    elif dataset_name == "fed_shakespeare":
-        logging.info("load_data. dataset_name = %s" % dataset_name)
-        client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
-        train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
-        class_num = load_partition_data_federated_shakespeare(args.dataset, args.data_dir)
-        args.client_num_in_total = client_num
-
     elif dataset_name == "fed_cifar100":
         logging.info("load_data. dataset_name = %s" % dataset_name)
         client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
         train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
         class_num = load_partition_data_federated_cifar100(args.dataset, args.data_dir)
-        args.client_num_in_total = client_num
-    elif dataset_name == "stackoverflow_lr":
-        logging.info("load_data. dataset_name = %s" % dataset_name)
-        client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
-        train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
-        class_num = load_partition_data_federated_stackoverflow_lr(args.dataset, args.data_dir)
-        args.client_num_in_total = client_num
-    elif dataset_name == "stackoverflow_nwp":
-        logging.info("load_data. dataset_name = %s" % dataset_name)
-        client_num, train_data_num, test_data_num, train_data_global, test_data_global, \
-        train_data_local_num_dict, train_data_local_dict, test_data_local_dict, \
-        class_num = load_partition_data_federated_stackoverflow_nwp(args.dataset, args.data_dir)
         args.client_num_in_total = client_num
 
     elif dataset_name == "ILSVRC2012":
@@ -229,8 +209,8 @@ def load_data(args, dataset_name):
 
     dataset = [train_data_num, test_data_num, train_data_global, test_data_global,
                train_data_local_num_dict, train_data_local_dict, test_data_local_dict, class_num]
-    return dataset
-
+    results_class.get_cls_dict(local_data_cls_dict)
+    return dataset, results_class
 
 def combine_batches(batches):
     full_x = torch.from_numpy(np.asarray([])).float()
@@ -240,37 +220,23 @@ def combine_batches(batches):
         full_y = torch.cat((full_y, batched_y), 0)
     return [(full_x, full_y)]
 
-
 def create_model(args, model_name, output_dim):
     logging.info("create_model. model_name = %s, output_dim = %s" % (model_name, output_dim))
     model = None
-    if model_name == "lr" and args.dataset == "mnist":
-        logging.info("LogisticRegression + MNIST")
-        model = LogisticRegression(28 * 28, output_dim)
+    if model_name == "cnn" and args.dataset == "mnist":
+        logging.info("CNN + MNIST")
+        model = CNN_OriginalFedAvg()
     elif model_name == "cnn" and args.dataset == "femnist":
         logging.info("CNN + FederatedEMNIST")
         model = CNN_DropOut(False)
     elif model_name == "resnet18_gn" and args.dataset == "fed_cifar100":
         logging.info("ResNet18_GN + Federated_CIFAR100")
         model = resnet18()
-    elif model_name == "rnn" and args.dataset == "shakespeare":
-        logging.info("RNN + shakespeare")
-        model = RNN_OriginalFedAvg()
-    elif model_name == "rnn" and args.dataset == "fed_shakespeare":
-        logging.info("RNN + fed_shakespeare")
-        model = RNN_OriginalFedAvg()
-    elif model_name == "lr" and args.dataset == "stackoverflow_lr":
-        logging.info("lr + stackoverflow_lr")
-        model = LogisticRegression(10000, output_dim)
-    elif model_name == "rnn" and args.dataset == "stackoverflow_nwp":
-        logging.info("RNN + stackoverflow_nwp")
-        model = RNN_StackOverFlow()
     elif model_name == "resnet56":
         model = resnet56(class_num=output_dim)
     elif model_name == "mobilenet":
         model = mobilenet(class_num=output_dim)
     return model
-
 
 def custom_model_trainer(args, model):
     if args.dataset == "stackoverflow_lr":
@@ -324,8 +290,10 @@ if __name__ == "__main__":
         f.write(data)
     f.close()
 
+    results_class = results_class()
+
     # load data
-    dataset = load_data(args, args.dataset)
+    dataset, results_class = load_data(args, args.dataset, results_class)
 
     # create model.
     # Note if the model is DNN (e.g., ResNet), the training will be very slow.
@@ -334,5 +302,5 @@ if __name__ == "__main__":
     model_trainer = custom_model_trainer(args, model)
     logging.info(model)
 
-    fedavgAPI = FedAvgAPI(dataset, device, args, model_trainer,save_dir)
+    fedavgAPI = FedAvgAPI(dataset, device, args, model_trainer, results_class, save_dir)
     fedavgAPI.train()

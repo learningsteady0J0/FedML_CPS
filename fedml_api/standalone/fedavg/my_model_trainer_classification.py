@@ -30,11 +30,12 @@ class MyModelTrainer(ModelTrainer):
             optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, self.model.parameters()), lr=args.lr,
                                          weight_decay=args.wd, amsgrad=True)
 
-        client_result = {'train_losses':[], 'test_losses':[], 'train_acc':[], 'test_acc':[], 'best_acc':-1}
+
+        client_result = {'train_losses':[], 'test_losses':[], 'train_acc':[], 'test_acc':[],'best_acc':-1}
         for epoch in range(args.epochs):
             batch_loss = []
             for batch_idx, (x, labels) in enumerate(train_data):
-                x, labels = x.to(device), labels.to(device)
+                x, labels = x.float().to(device), labels.long().to(device)
                 model.zero_grad()
                 log_probs = model(x)
                 loss = criterion(log_probs, labels)
@@ -73,6 +74,7 @@ class MyModelTrainer(ModelTrainer):
 
             client_result['test_losses'].append(test_loss)
             client_result['test_acc'].append(test_acc)
+
         return client_result
 
     def test(self, test_data, device, args):
@@ -84,15 +86,14 @@ class MyModelTrainer(ModelTrainer):
         metrics = {
             'test_correct': 0,
             'test_loss': 0,
-            'test_total': 0
+            'test_total': 0,
         }
 
         criterion = nn.CrossEntropyLoss().to(device)
 
         with torch.no_grad():
             for batch_idx, (x, target) in enumerate(test_data):
-                x = x.to(device)
-                target = target.to(device)
+                x, target = x.float().to(device), target.long().to(device)
                 pred = model(x)
                 loss = criterion(pred, target)
 
