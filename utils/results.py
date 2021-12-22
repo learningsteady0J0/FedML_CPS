@@ -279,7 +279,7 @@ def get_top_worst_idx(round, participants_client_result, n_plot=3):
 if __name__ == "__main__":
     # data_list[0] : client_results
     # data_list[1] : server_results
-    exp_name = "exp4$fedAVG_mnist_test"
+    exp_name = "exp7$fedAVG_mnist_test"
     dir_path = "../results/{}/".format(exp_name)
     data = get_data(dir_path + "results.pickle")
 
@@ -295,7 +295,7 @@ if __name__ == "__main__":
     server_accs = {'train' : server_results['train_acc'], 'test' : server_results['test_acc']}
     draw_server_results(server_results, dir_path, name='server')
 
-    draw_client_participants_result(2, client_participants_results, dir_path, n_plots =3)
+    draw_client_participants_result(0, client_participants_results, dir_path, n_plots =3)
 
     draw_client_results(client_idx_results,client_particpants_dict, dir_path, 10, name="Client")
 

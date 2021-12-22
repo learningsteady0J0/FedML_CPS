@@ -107,8 +107,16 @@ def partition_data(train_path, test_path, partition, n_nets, alpha, batch_size):
             net_dataidx_map = {}
             idx_batchs = [[] for _ in range(n_nets)]
 
+            data_num_list = []
+
             for k in range(K):
                 idx_k = np.where(y_phase == k)[0]
+                data_num_list.append(idx_k.shape[0])
+            min_datanum = min(data_num_list)
+
+            for k in range(K):
+                idx_k = np.where(y_phase == k)[0]
+                idx_k = np.random.choice(idx_k, min_datanum, replace=False)
                 np.random.shuffle(idx_k)
 
                 class_data_num = idx_k.shape[0] // n_nets
